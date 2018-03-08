@@ -3,28 +3,35 @@
 {% block title %}Hello {{ controller_name }}!{% endblock %}
 
 {% block body %}
-<table class="ui celled table">
-    <thead>
-    <tr>
-        <th>Descripcion</th>
-        <th>Fecha</th>
-        <th>terminada</th>
-        <th>Accion</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for task in tasks %}
-    <tr>
-        <td>{{ task.description }}</td>
-        <td>{{ task.createdAt | date }}</td>
-        <td>{{ task.done ? 'Si' : 'No' }}</td>
-        <td> </td>
-    </tr>
-    {% endfor %}
+
+    <table class="ui celled table">
+        <thead>
+        <tr>
+            <th>Descripción</th>
+            <th>Fecha</th>
+            <th>Terminado</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
         <tbody>
-</table>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.description }}</td>
+                <td>{{ task.createdAt | date }}</td>
+                <td>{{ task.done ? 'Sí' : 'No' }}</td>
+                <td><a href="{{ path('task_edit', { id: task.id }) }}" class="ui button">Editar</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+        <tr>
+            <th>
+                <a href="{{ path('task_new') }}" class="ui button">Crear tarea</a>
+            </th>
+        </tr>
+        </tfoot>
+
+    </table>
 
 
 {% endblock %}
-
-
