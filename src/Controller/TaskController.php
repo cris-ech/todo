@@ -15,8 +15,10 @@ class TaskController extends Controller
      * @Route("/", name="task")
      * @Route("/", name="homepage")
      */
+
     public function index(TaskRepository $repository)
     {
+        //$user = this->$this->getUser();
         $tasks = $repository->findAll();
 
         return $this->render('task/index.html.twig', [

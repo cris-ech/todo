@@ -39,6 +39,13 @@ class Task
 
     private $createdAt;
 
+    /**
+     * @var User
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $owner;
+
     public function __construct()
     {
         $this->description = "";
@@ -117,6 +124,23 @@ class Task
         $this->createdAt = $createdAt;
         return $this;
     }
+
+    /**
+     * @return User
+     */
+    public function getOwner()
+    {
+        return $this->owner;
+    }
+
+    /**
+     * @param User $owner
+     */
+    public function setOwner(User $owner)
+    {
+        $this->owner = $owner;
+    }
+
 
 
 
