@@ -122,4 +122,14 @@ class User implements UserInterface, \Serializable
             ) = unserialize($serialized);
 
     }
+
+    public function getEmail()
+    {
+        return "{$this->username}xxx@uco.es";
+    }
+
+    public function __toString()
+    {
+        return $this->username;
+    }
 }
